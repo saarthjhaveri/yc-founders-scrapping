@@ -29,12 +29,16 @@ ENV/
 env.bak/
 venv.bak/
 
-# Gmail API credentials and tokens
+# Google API credentials and tokens
 credentials.json
 token.json
+sheets_token.json
+sheets_config.json
 
-# CSV files with scraped data (optional - remove if you want to track them)
-yc_companies.csv
+# Data files (all data stored in Google Sheets)
+*.csv
+*.json.backup
+*.xlsx
 
 # IDE
 .vscode/
