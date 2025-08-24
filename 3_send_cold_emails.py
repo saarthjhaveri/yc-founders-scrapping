@@ -43,20 +43,42 @@ def setup_gmail_service():
 
 def extract_founder_name(company_name, email):
     """
-    Try to extract founder name from email or use company name
+    Try to extract founder name from email or use company name/generic greeting
     """
     # Try to extract name from email (before @)
-    email_prefix = email.split('@')[0]
+    email_prefix = email.split('@')[0].lower()
     
-    # Common patterns to clean up
-    email_prefix = re.sub(r'[._-]', ' ', email_prefix)
-    email_prefix = re.sub(r'\d+', '', email_prefix)  # Remove numbers
+    # Common generic email prefixes that should use company name or generic greeting
+    generic_prefixes = [
+        'founders', 'founder', 'team', 'hello', 'hi', 'contact', 'info', 
+        'support', 'admin', 'sales', 'business', 'general', 'mail',
+        'office', 'help', 'service', 'inquiries', 'partnerships'
+    ]
     
-    # If email looks like a name, use it
-    if len(email_prefix.split()) >= 1 and not any(word in email_prefix.lower() for word in ['hello', 'hi', 'contact', 'info', 'support', 'team', 'admin']):
-        return email_prefix.title()
+    # Check if email prefix is generic
+    is_generic = any(generic in email_prefix for generic in generic_prefixes)
     
-    # Otherwise, use "there" as generic greeting
+    if not is_generic:
+        # Clean up the email prefix for potential name
+        clean_prefix = re.sub(r'[._-]', ' ', email_prefix)
+        clean_prefix = re.sub(r'\d+', '', clean_prefix)  # Remove numbers
+        clean_prefix = clean_prefix.strip()
+        
+        # If it looks like a real name (has letters and reasonable length)
+        if len(clean_prefix) >= 2 and clean_prefix.replace(' ', '').isalpha():
+            return clean_prefix.title()
+    
+    # For generic emails, try to use company name if it's short and clean
+    if company_name:
+        # Clean company name
+        clean_company = re.sub(r'[^a-zA-Z\s]', '', company_name).strip()
+        
+        # If company name is short (1-2 words), use it with "team"
+        company_words = clean_company.split()
+        if len(company_words) <= 2 and len(clean_company) <= 20:
+            return f"{clean_company} team"
+    
+    # Default to generic greeting
     return "there"
 
 def create_email_message(to_email, founder_name, company_name):
