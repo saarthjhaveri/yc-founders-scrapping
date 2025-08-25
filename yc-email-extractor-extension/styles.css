@@ -1,0 +1,208 @@
+/* YC Email Extractor - Clean YC-Themed Styles */
+
+/* YC Brand Colors */
+:root {
+    --yc-orange: #ff6600;
+    --yc-orange-light: #ff8533;
+    --yc-orange-dark: #e55a00;
+    --yc-white: #ffffff;
+    --yc-gray-light: #f5f5f5;
+    --yc-gray-medium: #666666;
+    --yc-gray-dark: #333333;
+}
+
+/* Modal Styles - Clean and Simple */
+.yc-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+}
+
+.yc-modal-show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.yc-modal-content {
+    background: var(--yc-white);
+    border-radius: 8px;
+    border: 2px solid var(--yc-orange);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
+}
+
+.yc-modal-header {
+    background: var(--yc-orange);
+    color: var(--yc-white);
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.yc-modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.yc-modal-close {
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    background: none;
+    border: none;
+    color: var(--yc-white);
+    padding: 4px;
+}
+
+.yc-modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.yc-modal-body {
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    background: var(--yc-white);
+}
+
+.yc-results-summary {
+    background: var(--yc-gray-light);
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: var(--yc-gray-dark);
+    border-left: 4px solid var(--yc-orange);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.yc-results-list {
+    margin: 0;
+    padding: 0;
+}
+
+.yc-result-item {
+    padding: 12px 16px;
+    background: var(--yc-white);
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    transition: border-color 0.2s ease;
+}
+
+.yc-result-item:hover {
+    border-color: var(--yc-orange);
+}
+
+.yc-result-item strong {
+    color: var(--yc-gray-dark);
+    font-weight: 600;
+}
+
+.yc-no-results {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--yc-gray-medium);
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.yc-modal-footer {
+    background: var(--yc-gray-light);
+    padding: 16px 20px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    border-top: 1px solid #e0e0e0;
+}
+
+.yc-copy-btn, .yc-close-btn {
+    padding: 8px 16px;
+    border: 1px solid;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    transition: all 0.2s ease;
+}
+
+.yc-copy-btn {
+    background: var(--yc-orange);
+    color: var(--yc-white);
+    border-color: var(--yc-orange);
+}
+
+.yc-copy-btn:hover {
+    background: var(--yc-orange-dark);
+    border-color: var(--yc-orange-dark);
+}
+
+.yc-close-btn {
+    background: var(--yc-white);
+    color: var(--yc-gray-medium);
+    border-color: #ccc;
+}
+
+.yc-close-btn:hover {
+    background: var(--yc-gray-light);
+    border-color: var(--yc-gray-medium);
+}
+
+/* Extract Button Styles */
+.yc-extract-btn {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    background: var(--yc-orange) !important;
+    color: var(--yc-white) !important;
+    border: 2px solid var(--yc-orange) !important;
+    border-radius: 6px !important;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    box-shadow: none !important;
+}
+
+.yc-extract-btn:hover {
+    background: var(--yc-orange-dark) !important;
+    border-color: var(--yc-orange-dark) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Scrollbar Styles - Simple */
+.yc-modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.yc-modal-body::-webkit-scrollbar-track {
+    background: var(--yc-gray-light);
+}
+
+.yc-modal-body::-webkit-scrollbar-thumb {
+    background: var(--yc-orange);
+    border-radius: 4px;
+}
+
+.yc-modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--yc-orange-dark);
+}

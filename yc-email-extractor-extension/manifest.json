@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "YC Email Extractor",
+  "version": "1.0",
+  "description": "Extract founder emails from Y Combinator companies pages",
+  
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  
+  "host_permissions": [
+    "https://www.ycombinator.com/*",
+    "https://yc-oss.github.io/*"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": ["https://www.ycombinator.com/companies*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YC Email Extractor"
+  }
+}

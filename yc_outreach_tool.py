@@ -618,11 +618,12 @@ def main():
     
     # Show sample results
     if len(companies_with_emails) > 0:
-        print(f"\n📧 Sample companies with emails:")
-        sample_with_emails = companies_with_emails.head(5)
-        for _, row in sample_with_emails.iterrows():
+        print(f"\n📧 Companies with emails (simple format):")
+        print("-" * 50)
+        for _, row in companies_with_emails.iterrows():
             if row['founder_emails']:
-                print(f"   • {row['name']}: {row['founder_emails']}")
+                print(f"{row['name']} - {row['founder_emails']}")
+        print("-" * 50)
     
     # Send emails if requested
     if send_emails and len(companies_with_emails) > 0:
